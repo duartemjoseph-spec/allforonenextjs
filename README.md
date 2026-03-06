@@ -8,4 +8,4 @@ All For One NextJS Rebuild
  ## Brief Description of what you did. 
 Rebuilt the All For One app using NextJS
 ## Person who Peer Reviewed your assignment
-[Name Here]: "Comment here"
+[Gavin]: "Looks good i like the home page desgin and all of the calls work, Good work!"
