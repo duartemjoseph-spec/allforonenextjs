@@ -1,65 +1,63 @@
-import Image from "next/image";
+import Link from "next/link";
+import { Navbar } from "flowbite-react";
+
+const links = [
+  { num: 1, title: "Say Hello", sub: "HelloWorld endpoint", href: "/pages/HelloWorld" },
+  { num: 2, title: "Adding", sub: "Add 2 numbers", href: "/pages/AddingTwoNumbers" },
+  { num: 3, title: "Asking Questions", sub: "Name + wake up time", href: "/pages/AskingQuestions" },
+
+  { num: 4, title: "Greater or Less", sub: "Compare 2 numbers", href: "/pages/GreaterThanLessThan" },
+  { num: 5, title: "MadLib", sub: "Fill in 4 words", href: "/pages/MadLib" },
+  { num: 6, title: "Odd or Even", sub: "Check a number", href: "/pages/OddOrEven" },
+
+  { num: 7, title: "ReverseIt", sub: "Alphanumeric string", href: "/pages/ReverseItAlphanumeric" },
+  { num: 8, title: "Reverse Numbers Only", sub: "Numbers only", href: "/pages/ReverseItNumbersOnly" },
+  { num: 9, title: "Magic 8 Ball", sub: "Ask a question", href: "/pages/Magic8Ball" },
+
+  { num: 10, title: "Restaurant Picker", sub: "Category → suggestion", href: "/pages/RestaurantPicker" },
+];
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <div className="min-h-screen bg-gradient-to-b from-slate-950 via-slate-950 to-slate-900 text-slate-100">
+      {/* Top bar */}
+      <Navbar fluid className="bg-slate-900/30 border-b border-slate-700/30">
+        <div className="mx-auto">
+          <Link href="/" className="text-sm font-semibold text-slate-100">
+            All For One
+          </Link>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+
+        <div className="flex gap-3">
+          <span className="text-sm text-slate-200">Home</span>
         </div>
-      </main>
+      </Navbar>
+
+      {/* Center panel */}
+      <div className="min-h-[calc(100vh-64px)] flex items-center justify-center px-4 py-10">
+        {/* KEY: this max width matches your reference image better */}
+        <div className="w-full max-w-4xl">
+          <div className="rounded-2xl border border-slate-700/40 bg-slate-900/30 px-6 py-5 shadow-sm">
+            <h2 className="text-lg font-bold">Home</h2>
+            <p className="text-sm text-slate-300 mt-1">Pick an endpoint below.</p>
+
+            <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+              {links.map((l) => (
+                <Link
+                  key={l.href}
+                  href={l.href}
+                  className="block rounded-xl border border-slate-700/40 bg-slate-900/20 px-4 py-3 hover:border-slate-500/60 hover:bg-slate-900/35 transition"
+                >
+                  <p className="text-sm font-bold">
+                    {l.num}) {l.title}
+                  </p>
+                  <p className="text-xs text-slate-300">{l.sub}</p>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
